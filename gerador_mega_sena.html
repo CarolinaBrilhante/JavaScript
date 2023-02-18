@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Gerar Números</button>
+
+<script>
+
+	function sorteia(maximo) {
+
+		return Math.round(Math.random() * maximo);
+	}
+
+	function sorteiaNumeros(quantidade) {
+
+		var segredos = [];
+
+
+		var numero = 1;
+
+		while(numero <= quantidade) {
+
+			var numeroAleatorio = sorteia(60);
+
+			if(numeroAleatorio !== 0 && numeroAleatorio <= 60) {
+
+				var achou = false;
+
+				for(var posicao = 0; posicao < segredos.length; posicao++) {
+
+					if(segredos[posicao] == numeroAleatorio) {
+						achou = true;
+
+					}
+				}
+
+				if(achou == false) {
+					segredos.push(numeroAleatorio);
+					numero++;
+
+				}
+				else {
+						break;
+                }
+			}
+		}
+
+		return segredos;
+	}
+
+
+	var input = document.querySelector("input");
+	input.focus();	
+
+	var jogoMegaSena = sorteiaNumeros(6);	
+
+	var button = document.querySelector("button");
+
+	button.onclick = function() {
+		var jogoMegaSena = sorteiaNumeros(6);
+		alert(jogoMegaSena);
+	};
+
+</script>
